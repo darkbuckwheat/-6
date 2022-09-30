@@ -19,25 +19,6 @@ public class Dragon implements Comparable<Dragon>{
     public Dragon(String name, Coordinates coordinates, int age,
                   float wingspan, Boolean speaking, DragonColor color, DragonCave cave)
             throws IncorrectFieldValueException {
-        if (name == null) {
-            throw new IncorrectFieldValueException("name", name, "not null and not \"\"");
-        } else if (coordinates == null) {
-            throw new IncorrectFieldValueException("coordinates", String.valueOf(coordinates), "not null");
-        } else if (speaking == null) {
-            throw new IncorrectFieldValueException("speaking", String.valueOf(speaking), "not null");
-        } else if (color == null) {
-            throw new IncorrectFieldValueException("color", String.valueOf(color), "not null");
-        } else if (cave == null) {
-            throw new IncorrectFieldValueException("cave", String.valueOf(cave), "not null");
-        }
-
-        if (name.equals("")) {
-            throw new IncorrectFieldValueException("name", name, "not null and not \"\"");
-        } else if (age <= 0) {
-            throw new IncorrectFieldValueException("age", String.valueOf(age), "greater than 0");
-        } else if (wingspan <= 0) {
-            throw new IncorrectFieldValueException("wingspan", String.valueOf(wingspan), "greater than 0");
-        }
 
         this.id = 0L; //CollectionManager.getNewId();
         this.name = name;

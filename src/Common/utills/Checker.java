@@ -20,7 +20,7 @@ public final class Checker {
                 return port;
             }
         } catch (NumberFormatException e) {
-            throw new IllegalAddressException("the port must be a NUMBER!");
+            throw new IllegalAddressException("the port must be an integer number!");
         }
     }
 

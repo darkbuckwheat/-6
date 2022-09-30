@@ -9,7 +9,7 @@ public enum DragonColor {
     ORANGE("оранжевый", "orange"),
     YELLOW("жёлтый", "yellow"),
     GREEN("зелёный", "green"),
-    LITEBLUE("голубой", "liteblue"),
+    LITE_BLUE("голубой", "liteblue"),
     BLUE("синий", "blue"),
     VIOLET("фиолетовый", "violet"),
     BLACK("чёрный", "black"),
@@ -42,7 +42,11 @@ public enum DragonColor {
         }
     }
 
+    public static String getAll(){
+        return colors.values().toString() + engColors.values().toString();
+    }
+
     public String toString() {
-        return colorName;
+        return colorName + "/" + engColorName;
     }
 }
