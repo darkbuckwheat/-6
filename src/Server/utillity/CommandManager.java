@@ -1,10 +1,10 @@
 package Server.utillity;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import Common.utills.CommandRequirement;
 import Server.commands.*;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class CommandManager {
     private final HashMap<String, AbstractCommand> commands = new HashMap<>();
@@ -38,6 +38,14 @@ public class CommandManager {
         commands.put(printByWingspanCommand.getName(), printByWingspanCommand);
         UpdateByIdCommand updateByIdCommand = new UpdateByIdCommand(collectionManager, this);
         commands.put(updateByIdCommand.getName(), updateByIdCommand);
+        RemoveByIdCommand removeByIdCommand = new RemoveByIdCommand(collectionManager, this);
+        commands.put(removeByIdCommand.getName(), removeByIdCommand);
+        RemoveGreaterCommand removeGreaterCommand = new RemoveGreaterCommand(collectionManager, this);
+        commands.put(removeGreaterCommand.getName(), removeGreaterCommand);
+        RemoveLowerCommand removeLowerCommand = new RemoveLowerCommand(collectionManager, this);
+        commands.put(removeLowerCommand.getName(), removeLowerCommand);
+        SaveCommand saveCommand = new SaveCommand(collectionManager, this);
+        commands.put(saveCommand.getName(), saveCommand);
 
         commands.forEach((k, v) -> requirements.put(k, v.getRequirement()));
     }

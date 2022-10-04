@@ -1,0 +1,12 @@
+{"currentId":4,"collection":[{"id":0,"name":"Labory","coordinates":{"x":
+1283,"y":12398.21},"creationDate":"2022-08-31","age":122,"wingspan":
+14.0,"speaking":true,"color":"синий","cave":{"depth":21}},{"id":2,
+  "name":"Abraham","coordinates":{"x":144509,"y":-55629.0},
+  "creationDate":"2022-08-31","age":1000,"wingspan":40.0,"speaking":
+  true,"color":"красный","cave":{"depth":221}},{"id":3,"name":"Abin",
+  "coordinates":{"x":0,"y":0.0},"creationDate":"2022-08-31","age":1,
+  "wingspan":2.0,"speaking":false,"color":"зелёный","cave":{"depth":0}},{
+  "id":1,"name":"Perikl","coordinates":{"x":-12,"y":-48999.99},
+  "creationDate":"2022-08-31","age":45,"wingspan":12.0,"speaking":true,
+  "color":"красный","cave":{"depth":41}}],"initializationDate":
+"2022-08-31"}

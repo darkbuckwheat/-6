@@ -1,8 +1,8 @@
 package Server.utillity;
 
-import Common.exceptions.IllegalKeyException;
 import Common.utills.*;
 import Server.commands.AbstractCommand;
+import ch.qos.logback.classic.Logger;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -13,11 +13,13 @@ public class Receiver {
     private final int bufferSize;
     private final CommandManager commandManager;
     private final DatagramSocket server;
+    private final ch.qos.logback.classic.Logger logger;
 
-    public Receiver(CommandManager commandManager, DatagramSocket server, int bufferSize) {
+    public Receiver(CommandManager commandManager, DatagramSocket server, int bufferSize, Logger logger) {
         this.commandManager = commandManager;
         this.server = server;
         this.bufferSize = bufferSize;
+        this.logger = logger;
     }
 
     public void receive() throws IOException, ClassNotFoundException {
@@ -53,5 +55,6 @@ public class Receiver {
         byte[] bytesSending = Serializer.serialize(response);
         DatagramPacket packet = new DatagramPacket(bytesSending, bytesSending.length, client, port);
         server.send(packet);
+        logger.info("response sent to the address " + client + ", port " + port);
     }
 }

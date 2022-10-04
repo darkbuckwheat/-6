@@ -2,7 +2,6 @@ package Server.commands;
 
 import Common.classes.Dragon;
 import Common.exceptions.InvalidCommandArguments;
-import Common.exceptions.NumberOfArgumentException;
 import Common.utills.CommandRequirement;
 import Common.utills.ExecuteCode;
 import Common.utills.ServerResponse;
@@ -20,7 +19,7 @@ public class PrintByWingspanCommand extends AbstractCommand{
     public PrintByWingspanCommand(CollectionManager collectionManager, CommandManager commandManager){
         super("print_field_ascending_wingspan",
                 "Выводит на экран элементы коллекции в порядке возрастания значения поля wingspan",
-                CommandRequirement.DRAGON);
+                CommandRequirement.NONE);
         this.collectionManager = collectionManager;
         this.commandManager = commandManager;
     }
@@ -29,7 +28,7 @@ public class PrintByWingspanCommand extends AbstractCommand{
         if (!argument.isEmpty()) {
             throw new InvalidCommandArguments(argument);
         } else if(object != null){
-            throw new InvalidCommandArguments(argument.toString());
+            throw new InvalidCommandArguments(object.toString());
         }
         Comparator<Dragon> compareByWingspan = (o1, o2) -> {
             if (o1.getWingspan() - o2.getWingspan() > 0){
@@ -46,9 +45,10 @@ public class PrintByWingspanCommand extends AbstractCommand{
         List<Dragon> list = new ArrayList<>(collectionManager.getCollection());
         list.sort(compareByWingspan);
         for(Dragon dragon : list){
-            res.append(dragon.getWingspan());
+            res.append(dragon.getWingspan() + " ");
         }
         commandManager.addToHistory(this);
+        System.out.println(res);
         return new ServerResponse(res.toString(), ExecuteCode.VALUE);
     }
 }
