@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Locale;
 
 public class ConsoleManager {
-    private final HashMap<String, CommandRequirement> commands;
+    private HashMap<String, CommandRequirement> commands;
     private final InputManager inputManager;
     private final OutputManager outputManager;
     private final DragonFiller dragonFiller;
@@ -28,6 +28,7 @@ public class ConsoleManager {
 
     public void start() throws IOException, ClassNotFoundException, InvalidInputException, NoConnectionException, InterruptedException {
         boolean executeFlag = true;
+        commands = requester.sendPullingRequest();
         while (executeFlag) {
             String input = inputManager.read();
             if (!input.trim().isEmpty()) {

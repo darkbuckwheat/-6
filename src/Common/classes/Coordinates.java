@@ -2,7 +2,9 @@ package Common.classes;
 
 import Common.exceptions.IncorrectFieldValueException;
 
-public class Coordinates {
+import java.io.Serializable;
+
+public class Coordinates implements Serializable {
     private long x; //Значение поля должно быть больше -846
     private double y;
 

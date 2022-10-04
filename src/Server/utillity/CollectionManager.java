@@ -52,9 +52,30 @@ public class CollectionManager {
         collection.add(element);
     }
 
+    public Boolean containsId(Long id){
+        System.out.println(collection.stream().anyMatch(d -> d.getId().equals(id)));
+        return collection.stream().anyMatch(d -> d.getId().equals(id));
+    }
+
     public void removeElementById(Long id){
         collection.removeIf(d -> d.getId().equals(id));
     }
+
+    public Dragon getById(Long id){
+        return collection.stream().filter(d -> d.getId().equals(id)).findFirst().get();
+    }
+
+    public void update(Long id, Dragon newDragon){
+        Dragon old = getById(id);
+        old.setName(newDragon.getName());
+        old.setCoordinates(newDragon.getCoordinates());
+        old.setAge(newDragon.getAge());
+        old.setWingspan(newDragon.getWingspan());
+        old.setSpeaking(newDragon.getSpeaking());
+        old.setColor(newDragon.getColor());
+        old.setCave(newDragon.getCave());
+    }
+
 
     public void clear(){
         collection.clear();

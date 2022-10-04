@@ -1,10 +1,11 @@
 package Common.classes;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public enum DragonColor {
+public enum DragonColor implements Serializable {
     RED("красный", "red"),
     ORANGE("оранжевый", "orange"),
     YELLOW("жёлтый", "yellow"),

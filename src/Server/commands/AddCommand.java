@@ -3,6 +3,7 @@ package Server.commands;
 import Client.exceptions.InvalidInputException;
 import Client.exceptions.ScriptException;
 import Client.utillity.DragonFiller;
+import Common.classes.Dragon;
 import Common.exceptions.IncorrectFieldValueException;
 import Common.exceptions.InvalidCommandArguments;
 import Common.utills.ExecuteCode;
@@ -14,22 +15,20 @@ import Common.utills.CommandRequirement;
 
 public class AddCommand extends AbstractCommand{
     private final CollectionManager collectionManager;
-    private final DragonFiller dragonFiller;
     private final CommandManager commandManager;
 
-    public AddCommand(CollectionManager collectionManager, DragonFiller dragonFiller, CommandManager commandManager){
+    public AddCommand(CollectionManager collectionManager, CommandManager commandManager){
         super("add", "Добавляет элемент в коллекцию", CommandRequirement.DRAGON);
         this.collectionManager = collectionManager;
-        this.dragonFiller = dragonFiller;
         this.commandManager = commandManager;
     }
 
     public ServerResponse execute(String argument, Object object)
             throws InvalidCommandArguments, InvalidInputException, IncorrectFieldValueException, ScriptException {
-        if (!argument.isEmpty() || object != null) {
+        if (!argument.isEmpty() || object == null){
             throw new InvalidCommandArguments();
         }
-        collectionManager.addElement(dragonFiller.fillDragon());
+        collectionManager.addElement((Dragon) object);
         commandManager.addToHistory(this);
         return new ServerResponse(ExecuteCode.SUCCESS);
     }

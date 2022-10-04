@@ -1,8 +1,9 @@
 package Common.classes;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class DragonCave {
+public class DragonCave implements Serializable {
     private int depth;
 
     public DragonCave(int depth){

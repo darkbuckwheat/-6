@@ -38,11 +38,11 @@ public class DragonFiller {
     }
 
     public Boolean fillSpeaking() throws ScriptException, InvalidInputException {
-        return baseDragonFiller.fill("Enter id", reader::readSpeaking);
+        return baseDragonFiller.fill("Enter speaking", reader::readSpeaking);
     }
 
     public DragonColor fillColor() throws ScriptException, InvalidInputException {
-        return baseDragonFiller.fill("Enter id", reader::readColor);
+        return baseDragonFiller.fill("Enter color", reader::readColor);
     }
 
     public DragonCave fillCave() throws ScriptException, InvalidInputException {
