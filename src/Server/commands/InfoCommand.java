@@ -21,7 +21,7 @@ public class InfoCommand extends AbstractCommand{
         if (!argument.isEmpty()) {
             throw new InvalidCommandArguments(argument);
         } else if(object != null){
-            throw new InvalidCommandArguments(argument.toString());
+            throw new InvalidCommandArguments(object.toString());
         }
         String res = "Некоторая информация о коллекции, с которой работает программа:" +
                 "\nТип коллекции: " + collectionManager.getCollection().getClass().getName() +

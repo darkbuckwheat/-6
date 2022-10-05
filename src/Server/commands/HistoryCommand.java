@@ -18,7 +18,7 @@ public class HistoryCommand extends AbstractCommand{
         if (!argument.isEmpty()) {
             throw new InvalidCommandArguments(argument);
         } else if(object != null){
-            throw new InvalidCommandArguments(argument.toString());
+            throw new InvalidCommandArguments(object.toString());
         }
         commandManager.addToHistory(this);
         return new ServerResponse(commandManager.getHistory().toString(), ExecuteCode.VALUE);

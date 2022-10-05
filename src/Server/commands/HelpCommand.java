@@ -6,7 +6,6 @@ import Common.utills.ExecuteCode;
 import Common.utills.ServerResponse;
 import Server.utillity.CommandManager;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class HelpCommand extends AbstractCommand{
@@ -23,7 +22,7 @@ public class HelpCommand extends AbstractCommand{
         if (!argument.isEmpty()) {
             throw new InvalidCommandArguments(argument);
         } else if(object != null){
-            throw new InvalidCommandArguments(argument.toString());
+            throw new InvalidCommandArguments(object.toString());
         }
         String res = "Список доступных команд:";
         for (AbstractCommand command : commands.values()) {

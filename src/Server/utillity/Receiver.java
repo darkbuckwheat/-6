@@ -41,10 +41,6 @@ public class Receiver {
                 AbstractCommand command = commandManager.getCommands().get(inputCommand);
                 try {
                     response = command.execute(argument, objectArgument);
-                    /*commandManager.getSaveCommand().execute("", null);
-                } catch (IllegalKeyException e) {
-                    response = new ServerResponse(e.getMessage(), ExecuteCode.ERROR);
-                */
                 } catch (Exception e) {
                     response = new ServerResponse(e.getMessage(), ExecuteCode.ERROR);
                 }

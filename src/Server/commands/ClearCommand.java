@@ -20,7 +20,7 @@ public class ClearCommand extends AbstractCommand {
         if (!argument.isEmpty()) {
             throw new InvalidCommandArguments(argument);
         } else if(object != null){
-            throw new InvalidCommandArguments(argument.toString());
+            throw new InvalidCommandArguments(object.toString());
         }
         collectionManager.clear();
         return new ServerResponse(ExecuteCode.SUCCESS);

@@ -46,6 +46,8 @@ public class CommandManager {
         commands.put(removeLowerCommand.getName(), removeLowerCommand);
         SaveCommand saveCommand = new SaveCommand(collectionManager, this);
         commands.put(saveCommand.getName(), saveCommand);
+        ChangeSaveFile changeSaveFile = new ChangeSaveFile(collectionManager, this);
+        commands.put(changeSaveFile.getName(), changeSaveFile);
 
         commands.forEach((k, v) -> requirements.put(k, v.getRequirement()));
     }

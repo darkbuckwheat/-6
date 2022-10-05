@@ -16,7 +16,7 @@ public class ExecuteScriptCommand extends AbstractCommand {
         if (!argument.isEmpty()) {
             throw new InvalidCommandArguments(argument);
         } else if(object != null){
-            throw new InvalidCommandArguments(argument.toString());
+            throw new InvalidCommandArguments(object.toString());
         }
         return new ServerResponse(argument, ExecuteCode.READ_SCRIPT);
     }
