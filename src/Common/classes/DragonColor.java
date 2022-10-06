@@ -44,10 +44,11 @@ public enum DragonColor implements Serializable {
     }
 
     public static String getAll(){
-        return colors.values().toString() + engColors.values().toString();
+        return "[" + colors.keySet().stream().map((x) -> colors.get(x).colorName + "/" + colors.get(x).engColorName)
+                .collect(Collectors.joining(", ")) + "]";
     }
 
     public String toString() {
-        return colorName + "/" + engColorName;
+        return engColorName;
     }
 }

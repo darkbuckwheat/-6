@@ -26,7 +26,8 @@ public class ConsoleManager {
         this.requester = requester;
     }
 
-    public void start() throws IOException, ClassNotFoundException, InvalidInputException, NoConnectionException, InterruptedException {
+    public void start() throws IOException, ClassNotFoundException, InvalidInputException,
+            NoConnectionException, InterruptedException {
         boolean executeFlag = true;
         commands = requester.sendPullingRequest();
         while (executeFlag) {

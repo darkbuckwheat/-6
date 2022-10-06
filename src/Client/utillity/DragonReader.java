@@ -1,9 +1,10 @@
 package Client.utillity;
 
 import Client.exceptions.InvalidInputException;
-import Client.utillity.InputManager;
 import Common.classes.DragonColor;
 import Common.exceptions.IncorrectFieldValueException;
+
+import java.util.Locale;
 
 public class DragonReader{
     private final InputManager inputManager;
@@ -38,9 +39,13 @@ public class DragonReader{
         return wingspan;
     }
 
-    public Boolean readSpeaking() throws InvalidInputException {
+    public Boolean readSpeaking() throws IncorrectFieldValueException, InvalidInputException {
         Boolean speaking;
-        speaking = Boolean.parseBoolean(inputManager.read());
+        String inp = inputManager.read().toLowerCase(Locale.ROOT);
+        if (inp != "true" && inp != "false"){
+            throw new IncorrectFieldValueException("speaking", inp, "one of 'true' or 'false'");
+        }
+        speaking = Boolean.parseBoolean(inp);
         return speaking;
     }
 

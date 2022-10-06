@@ -2,22 +2,14 @@ package Client;
 
 import Client.exceptions.InvalidInputException;
 import Client.exceptions.NoConnectionException;
-
 import Client.utillity.*;
-
 import Common.exceptions.IllegalAddressException;
-
-import Client.utillity.DragonFiller;
-import Client.utillity.DragonReader;
 import Common.utills.Checker;
 import Common.utills.CommandRequirement;
 
 import java.io.IOException;
-
 import java.net.InetSocketAddress;
-
 import java.nio.channels.DatagramChannel;
-
 import java.util.HashMap;
 
 
@@ -44,13 +36,12 @@ public final class Client {
                 HashMap<String, CommandRequirement> requirements = requester.sendPullingRequest();
                 ConsoleManager consoleManager = new ConsoleManager(requirements, inputManager, outputManager, dragonFiller, requester);
                 consoleManager.start();
-            } catch (IllegalAddressException e) {
+            } catch (IllegalAddressException | NoConnectionException | InterruptedException
+                    | ClassNotFoundException | InvalidInputException e) {
                 outputManager.printlnImportantColorMessage(e.getMessage(), Color.RED);
             } catch (IOException e) {
                 outputManager.printlnImportantColorMessage("error during connection:", Color.RED);
-                e.printStackTrace();
-            } catch (NoConnectionException | InterruptedException | ClassNotFoundException | InvalidInputException e) {
-                e.printStackTrace();
+                outputManager.printlnImportantColorMessage(e.getMessage(), Color.RED);
             }
         } else {
             outputManager.printlnImportantColorMessage("please enter a server hostname and port as a command "

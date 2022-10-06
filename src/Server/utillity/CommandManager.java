@@ -10,6 +10,7 @@ public class CommandManager {
     private final HashMap<String, AbstractCommand> commands = new HashMap<>();
     private final ArrayList<String> history = new ArrayList<>();
     private final HashMap<String, CommandRequirement> requirements = new HashMap<>();
+    private final SaveCommand saveCommand;
 
     public CommandManager(CollectionManager collectionManager) {
         ClearCommand clearCommand = new ClearCommand(collectionManager);
@@ -44,12 +45,12 @@ public class CommandManager {
         commands.put(removeGreaterCommand.getName(), removeGreaterCommand);
         RemoveLowerCommand removeLowerCommand = new RemoveLowerCommand(collectionManager, this);
         commands.put(removeLowerCommand.getName(), removeLowerCommand);
-        SaveCommand saveCommand = new SaveCommand(collectionManager, this);
-        commands.put(saveCommand.getName(), saveCommand);
         ChangeSaveFile changeSaveFile = new ChangeSaveFile(collectionManager, this);
         commands.put(changeSaveFile.getName(), changeSaveFile);
 
         commands.forEach((k, v) -> requirements.put(k, v.getRequirement()));
+
+        saveCommand = new SaveCommand(collectionManager, this);
     }
 
     public HashMap<String, AbstractCommand> getCommands() {
@@ -62,6 +63,10 @@ public class CommandManager {
 
     public HashMap<String, CommandRequirement> getRequirements() {
         return requirements;
+    }
+
+    public SaveCommand getSaveCommand() {
+        return saveCommand;
     }
 
     public void addToHistory(AbstractCommand command){

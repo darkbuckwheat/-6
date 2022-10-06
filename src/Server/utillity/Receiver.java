@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.SocketTimeoutException;
 
 public class Receiver {
     private final int bufferSize;
@@ -25,7 +26,13 @@ public class Receiver {
     public void receive() throws IOException, ClassNotFoundException {
         byte[] bytesReceiving = new byte[bufferSize];
         DatagramPacket request = new DatagramPacket(bytesReceiving, bytesReceiving.length);
-        server.receive(request);
+        server.setSoTimeout(10);
+        try {
+            server.receive(request);
+        }
+        catch (SocketTimeoutException e){
+            return;
+        }
         Object received = Serializer.deserialize(bytesReceiving);
         InetAddress client = request.getAddress();
         int port = request.getPort();
